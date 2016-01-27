@@ -1,0 +1,47 @@
+---
+title: "Lab 1"
+output: html_document
+---
+
+```{r}
+moeda <- function(p){
+  x <- runif(1)
+  ifelse(x>p,1,0)
+}
+```
+
+```{r}
+library(magrittr)
+
+moedas <- function(p,n){
+  x <- runif(n)
+  ifelse(x>p,1,0)
+}
+
+proporcao <- function(resultado){
+  sum(resultado)/length(resultado)
+}
+
+simulacao <- function(k,p,n) {
+  replicate(k,moedas(p,n) %>% proporcao) 
+}
+
+hist(simulacao(10,0.5,1000))
+
+hist(simulacao(100,0.5,1000))
+
+hist(simulacao(1000,0.5,1000))
+
+```
+
+
+
+
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
